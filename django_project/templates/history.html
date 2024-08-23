@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+  <style>
+  table, td, th 
+    {
+      border: 1px solid black; 
+      border-collapse: collapse;
+      text-align: center;
+      font-family: Courier;
+      font-size: 15.5px;
+    }
+  tr:hover {background-color: skyblue;}
+  th{background-color:lightpink;}
+  tr:nth-child(even) {background-color: lightyellow;}
+  td,th
+    {
+      padding: 1px;
+      border-bottom: 1px solid black;
+      color: red;
+    }
+  .container{
+    max-width:320px;
+  }
+
+
+  </style>
+  
+
+<body>
+  <div class="container">
+    <a href="/" class="btn btn-primary">Go to Home</a>
+    <h1>Parking Ticket History</h1>
+    <form action="/history/" method="post">
+      {% csrf_token %}
+      <div class= "form-group">
+        <label for="example">
+          {{form.region.label}}
+        </label>
+        {{form.region}}
+      </div>
+      <div class="form-group">
+        <label for="example">
+          {{form.day.label}}
+        </label>
+        {{form.day}}
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+<table>
+      
+      <tr>
+        <th>Street Address</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+  {% if pastickets %}
+    {% for pastticket in pasttickets %}
+      <tr>
+        <td>{{pastticket.address}}</td>
+        <td>{{pastticket.time|date:"m/d/y"}}</td>
+        <td>{{pastticket.time|time:"H:i"}}</td>
+      </tr>
+    {% endfor %}
+        
+  {% else %}
+
+     
+      {% endif %}
+    </table>
+  </div>
+</body>
+</html>

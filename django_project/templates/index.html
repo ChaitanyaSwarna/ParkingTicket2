@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Parking Ticket Details</title>
+</head>
+<style>
+   body {
+      font-family: monospace;
+      color: black;
+      width: 320px;
+      padding: 12px 20px;
+      margin: auto;
+      display: inline-grid;
+      justify-content: center;
+      justify-items: center;
+      border: 10px solid #ccc;
+      border-radius: 50px;
+      box-sizing: border-box;
+      text-align: center;
+      display: table;
+      margin: auto;
+    }
+    .container {
+      max-width: 320px;
+      margin: 5px auto; /* Center the container */
+    }
+  </style>
+<body>
+<div class="container">
+  <form action="/" method="post">
+    {%csrf_token %}
+    <div class= "form-group">
+      <label for="example">
+        {{form.time.label}}
+      </label>
+      {{form.time}}
+    </div>
+    <div class="form-group">
+      <label for="example">
+        {{form.region.label}}
+      </label>
+      {{form.region}}
+      
+    </div>
+    <div class="form-group">
+      <label for="example">
+        {{form.address.label}}
+      </label>
+      {{form.address}}
+    </div>
+    {{form.day}}
+    
+ 
+    <button type="submit"> Submit </button>
+    <a href="history/">Go to history Page</a>
+    
+  </form>
+</div>
+</body>
+</html>
